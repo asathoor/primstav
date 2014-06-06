@@ -10,6 +10,12 @@
 
 -----------------------------------------------------------------------------------------
 
+-- modules
+local dagaz = require "dagaz"
+
+-- test the module above = Ok.
+-- aDay(157,3)
+
 -- placering
 local __W = display.contentWidth/2
 local __H = display.contentHeight/2
@@ -24,6 +30,8 @@ local mellemrum = 3
 
 local flise = {}
 local nummer = {}
+
+local tekst = {}
 
 -- titel
 local titel = display.newText("Primstaven", __W, -200, native.systemfont, 36)
@@ -60,6 +68,10 @@ while i <= aarDage do
 	nummer[i] = display.newText(i, xPos, -220, native.systemfont, 20)
 	nummer[i]:setFillColor( 255, 255, 255 )
 	
+	-- add symbol here
+	-- ...
+
+	
 	-- tilfoejes til gruppen
 	g1:insert(flise[i])
 	g1:insert(nummer[i]) 
@@ -67,8 +79,11 @@ while i <= aarDage do
 	i = i + 1
 end
 
+
+
 -- GRAFIK OG TEKSTER
 -- hentes via json
+-- class 
 
 -- DAGENS NUMMER (yday)
 -- herunder skabes tabellen:   {year = 1998, month = 9, day = 16, yday = 259, wday = 4, hour = 23, min = 48, sec = 10, isdst = false}
@@ -105,3 +120,4 @@ end
  
 -- make 'myObject' listen for touch events
 g1:addEventListener( "touch", myObject )
+
