@@ -8,12 +8,11 @@
 -- by Per Thykjaer Jensen, MA
 -- License GPLv3
 
------------------------------------------------------------------------------------------
+-----------------------------------------------------------
+-- MODULES
 
--- modules
-local dagaz = require "dagaz"
-
--- test the module above = Ok.
+local dagaz = require "dagaz" -- days and images
+-- test the dagaz module above = Ok
 -- aDay(157,3)
 
 -- placering
@@ -33,7 +32,9 @@ local nummer = {}
 
 local tekst = {}
 
--- titel
+-----------------------------------------------------------
+-- TITEL 
+
 local titel = display.newText("Primstaven", __W, -200, native.systemfont, 36)
 titel:setFillColor( 255, 255, 255 )
 
@@ -56,7 +57,11 @@ if isLeapYear(os.date("%Y"))
 	else aarDage = 365 
 	end
 
+
+-----------------------------------------------------------
+-- THE PRIMSTAV LOOP
 -- aarDage anvendes. Programmet ved om aaret er et skudaar.
+
 while i <= aarDage do
 	xPos = xPos + bred + mellemrum
 
@@ -68,25 +73,24 @@ while i <= aarDage do
 	nummer[i] = display.newText(i, xPos, -220, native.systemfont, 20)
 	nummer[i]:setFillColor( 255, 255, 255 )
 	
-	-- add symbol here
-	-- ...
-
+	-- insert symbol
+	sym = display.newImage("images/test.png")
+	-- ?? sym = display.newImage(thord)
+	sym.x = nummer[i].x
+	sym.y = __H - 300
 	
 	-- tilfoejes til gruppen
 	g1:insert(flise[i])
 	g1:insert(nummer[i]) 
-
+	g1:insert(sym)
+	
 	i = i + 1
 end
 
-
-
--- GRAFIK OG TEKSTER
--- hentes via json
--- class 
-
+-----------------------------------------------------------
 -- DAGENS NUMMER (yday)
 -- herunder skabes tabellen:   {year = 1998, month = 9, day = 16, yday = 259, wday = 4, hour = 23, min = 48, sec = 10, isdst = false}
+
 yday = os.date("*t", os.time()) 
 -- print(yday["yday"])
 
@@ -97,7 +101,9 @@ flise[yday['yday']]:setFillColor(200/255,0,0)
 g1.x = ((( -1 * bred)  ) * yday["yday"]) - __W
 g1.y = 150
 
- -- touch listener function
+-----------------------------------------------------------
+-- TOUCH
+
 function g1:touch( event )
   local t = event.target
   local phase = event.phase
@@ -117,7 +123,12 @@ function g1:touch( event )
   end
   return true
 end
- 
+
+-----------------------------------------------------------
+-- TOUCH 
 -- make 'myObject' listen for touch events
+
 g1:addEventListener( "touch", myObject )
+
+
 
