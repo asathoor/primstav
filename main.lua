@@ -14,10 +14,8 @@ local physics = require("physics")
 physics.start()
 
 local dagaz = require "dagaz" -- days and images
--- test the dagaz module above = Ok
--- aDay(157,3)
+-- ex: aDay(157,3)
 
--- placering
 local __W = display.contentWidth/2
 local __H = display.contentHeight/2
 
@@ -35,30 +33,28 @@ local nummer = {}
 local tekst = {}
 
 -----------------------------------------------------------
--- TITEL 
+-- TITLE 
 
-local titel = display.newText("Primstaven", __W, -200, native.systemfont, 36)
+local titel = display.newText("Primstav", __W, -200, native.systemfont, 36)
 titel:setFillColor( 255, 255, 255 )
 
 local datoen = os.date("%d.%m. %Y") -- henter en dato via os
 
-
 local titel = display.newText("The Scandinavian Almanac " .. datoen, __W, -170, native.systemfont, 18)
 titel:setFillColor( 255, 255, 255 )
 
--- EN FLISE PR DAG I AARET
-
--- Tjek for skudaar
+-----------------------------------------------------------
+-- LEAP YEAR CHECK
 function isLeapYear(year)
   return year%4==0 and (year%100~=0 or year%400==0)
 end
 
--- Hvis skudaar så ... antal dage
+-- leap year function
+-- nb. the leap day is Feb. 24th
 if isLeapYear(os.date("%Y")) 
 	then aarDage = 366
 	else aarDage = 365 
 	end
-
 
 -----------------------------------------------------------
 -- THE PRIMSTAV LOOP
@@ -103,7 +99,8 @@ flise[yday['yday']]:setFillColor(200/255,0,0)
 g1.x = ((( -1 * bred)  ) * yday["yday"]) - __W
 g1.y = 150
 
--- physics
+-- Physics
+-- physics (perhaps later on for a nice scrolling effect)
 -- physics.addBody( g1, "static", { density=2,friction=0.5, bounce=0.3 } )
 
 -----------------------------------------------------------
@@ -129,11 +126,7 @@ function g1:touch( event )
   return true
 end
 
------------------------------------------------------------
--- TOUCH 
--- make 'myObject' listen for touch events
-
-g1:addEventListener( "touch", myObject )
+g1:addEventListener( "touch", myObject ) -- make 'myObject' listen for touch events
 
 
 

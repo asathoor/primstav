@@ -19,22 +19,18 @@ function aDay(num, ber)
 	return dagaz[num][ber] 
 end
 
--- test
-	--print(type(dagaz[1][3]))
-	--print(type(dagaz[666]))	
-	--if (type(dagaz[1][3]) == "string") then print("det er en streng") end
-
--- Only do something if array element is defined 
+-- Check whether a string exists in the dagaz table
 function bDay(num,ber)
 	if (type(dagaz[num][ber]) == "string") 
 	then
 		print("Strengen findes: " .. dagaz[num][ber])
 		return dagaz[num][ber]
 	else 
-		print("Denne streng er ikke defineret endnu")
+		print("Denne dato-streng er ikke defineret endnu")
 		return false
 	end
 end
 
-bDay(333,3) -- > nil
-bDay(157,3) -- > dagaz[num][ber]
+-- test
+-- bDay(333,3) -- > nil
+-- bDay(157,3) -- > dagaz[num][ber]
