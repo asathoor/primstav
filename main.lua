@@ -1,15 +1,17 @@
------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------
 -- main.lua
 
 -- Primstaven
 -- Ye Olde Norse Calendar
-
--- version	0.1
 -- by Per Thykjaer Jensen, MA
 -- License GPLv3
 
 -----------------------------------------------------------
 -- MODULES
+
+local physics = require("physics")
+physics.start()
 
 local dagaz = require "dagaz" -- days and images
 -- test the dagaz module above = Ok
@@ -60,7 +62,7 @@ if isLeapYear(os.date("%Y"))
 
 -----------------------------------------------------------
 -- THE PRIMSTAV LOOP
--- aarDage anvendes. Programmet ved om aaret er et skudaar.
+-- Draw the primstav
 
 while i <= aarDage do
 	xPos = xPos + bred + mellemrum
@@ -88,18 +90,21 @@ while i <= aarDage do
 end
 
 -----------------------------------------------------------
--- DAGENS NUMMER (yday)
--- herunder skabes tabellen:   {year = 1998, month = 9, day = 16, yday = 259, wday = 4, hour = 23, min = 48, sec = 10, isdst = false}
+-- THE DAY'S NUMBER (yday)
+-- Creates this table:   {year = 1998, month = 9, day = 16, yday = 259, wday = 4, hour = 23, min = 48, sec = 10, isdst = false}
 
 yday = os.date("*t", os.time()) 
 -- print(yday["yday"])
 
--- aendre farven paa dagen i dag
+-- color
 flise[yday['yday']]:setFillColor(200/255,0,0)
 
 -- placerer den aktuelle dag synligt paa skaermen
 g1.x = ((( -1 * bred)  ) * yday["yday"]) - __W
 g1.y = 150
+
+-- physics
+-- physics.addBody( g1, "static", { density=2,friction=0.5, bounce=0.3 } )
 
 -----------------------------------------------------------
 -- TOUCH
