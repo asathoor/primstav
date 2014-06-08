@@ -81,3 +81,15 @@ end
 -- test
 dayNumber(12,27) 
 
+-- Check whether an element exists in an array or not
+-- e.g. only print a defined image
+function setContains(set, key1, key2)
+
+	if set[key1] ~= nil 
+		then print("images/" .. set[key1][key2]) 
+		else print("file: dagaz.lua l. 86: element not found in table") 
+	end
+	 
+    return set[key] ~= nil
+end
+setContains(dagaz, 157, 3) -- test
