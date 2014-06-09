@@ -130,4 +130,18 @@ end
 g1:addEventListener( "touch", myObject ) -- make 'myObject' listen for touch events
 
 
+--------------------------------------------------------------
+-- Check whether an element exists in an array or not
+-- (not used but may come in handy ...)
+
+function setContains(set, key1, key2)
+
+	if set[key1] ~= nil 
+		then print("images/" .. set[key1][key2]) 
+		else print("file: dagaz.lua l. 86: element not found in table") 
+	end
+	 
+    return set[key] ~= nil
+end
+-- setContains(dagaz, 157, 3) -- sample
 
