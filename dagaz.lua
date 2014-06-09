@@ -1,7 +1,19 @@
 -- module: dagaz.lua
 -- purpose: tables for the days
 
+--[[
+This module is still somewhat experimental.
+Doing sort of the stuff the primstav needs here and there.
+]]--
+
+------------------------------------------------------
+-- THE YEAR ARRAY
+
 local dagaz = {} -- array for all days
+
+--[[
+Leap year function needed here ...
+]]--
 
 -- Placeholders for the days of any year
 for n = 1, 366, 1 do
@@ -9,21 +21,40 @@ for n = 1, 366, 1 do
 end
 
 ------------------------------------------------------
--- alternative dagaz array
--- 
+-- Alternative dagaz array
+
+--[[
+The idea is to create a table for the entire year
+by a loop - and then change the values of special days.
+Then the "tiles" of the primstav may be constructed in 
+by a loop.
+]]--
 
 local dagaz2 = {} -- the dates
 -- form month day e.g.
 
-dagaz2[12] = { [24] =  {"1224.png", "Juleaftens Dag"}}
+dagaz2[12] = { 	[24] =  {"1224.png", "Juleaftens Dag"},
+ 				[25] =  {"1225.png", "Juledag"},
+				[27] =  {"1227.png", "Nissedag"} 
+}
 
---test
-print("### Dagaz2: " .. dagaz2[12][24][2]) -- tekst juleaften
+-- Usage:
+-- dagaz2[12][27] = {"Nonsense Mass","badaboom"} -- change value of 27th. 12.
+-- print("### Dagaz2: " .. dagaz2[12][27][2]) -- tekst juleaften
+
+
 
 ------------------------------------------------------
 -- DATE, IMAGE, TEXT
 -- sample: dagaz[1] = number of the day - array: month, day, image, text
 
+--[[
+The first idea.
+Not that practical.
+The code is commented out ... but kept for referece.
+]]--
+
+--[[
 -- Winter
 dagaz[1] = {1,1,"day_1.png","New Years Day"} -- test 
 
@@ -56,6 +87,8 @@ if (type(bDay(157,3)) == "string")
 	then print("images/" .. tostring(bDay(2,3))) 
 end 
 
+]]--
+
 ------------------------------------------------------
 -- THE DAY NUMBER
 -- Enter month and date via the function dayNumber()
@@ -79,7 +112,7 @@ function dayNumber(month,enDag)
     return day + enDag
 end
 -- test
-dayNumber(12,27) 
+-- dayNumber(12,27) 
 
 -- Check whether an element exists in an array or not
 -- e.g. only print a defined image
@@ -92,4 +125,4 @@ function setContains(set, key1, key2)
 	 
     return set[key] ~= nil
 end
-setContains(dagaz, 157, 3) -- test
+-- setContains(dagaz, 157, 3) -- sample
