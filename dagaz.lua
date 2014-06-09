@@ -37,6 +37,12 @@ function lavMaaned(maaned, count)
 	end
 end
 
+-- JANUAR
+-- FEBRUAR
+-- MARTS
+-- APRIL
+-- MAJ
+
 -- JUNI
 
 lavMaaned(6,1) -- create the month placeholder
@@ -53,6 +59,14 @@ dagaz[6] = {
 	[24] = {nil, "St. Hans"},
 	[29] = {nil, "Petersmesse"}
 }
+
+-- JULI
+-- AUGUST
+-- SEPTEMBER
+-- OKTOBER
+-- NOVEMBER
+
+-- DECEMBER
 
 dagaz[12] = { 
 	[24] =  {"1224.png", "Juleaftens Dag"},
