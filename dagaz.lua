@@ -29,7 +29,7 @@ if isLeapYear(os.date("%Y"))
 
 -- Placeholder for the month
 function lavMaaned(maaned, count)
-	while count <= maaned do
+	while count <= maaneder[maaned] do
 		dagaz[maaned] = {
 			[count] = {nil,nil}
 		}
