@@ -2,16 +2,15 @@
 -----------------------------------------------------------
 -- main.lua
 
--- Primstaven
+-- PRIMSTAV
 -- Ye Olde Norse Calendar
 -- by Per Thykjaer Jensen, MA
 -- License GPLv3
 
 -----------------------------------------------------------
 -- MODULES
-
-local physics = require("physics")
-physics.start()
+-- local physics = require("physics")
+-- physics.start()
 
 local dagaz = require "dagaz" -- days and images
 -- ex: aDay(157,3)
@@ -27,9 +26,9 @@ local bred = 150
 local hoej = 600
 local mellemrum = 3
 
+-- arrays
 local flise = {}
 local nummer = {}
-
 local tekst = {}
 
 -----------------------------------------------------------
@@ -50,10 +49,13 @@ function isLeapYear(year)
 end
 
 -- leap year function
--- nb. the leap day is Feb. 24th
 if isLeapYear(os.date("%Y")) 
-	then aarDage = 366
-	else aarDage = 365 
+	then 
+		aarDage = 366
+		maaneder = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31} -- days of the year
+	else 
+		aarDage = 365 
+		maaned = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31} -- days of the year
 	end
 
 -----------------------------------------------------------
@@ -73,7 +75,6 @@ while i <= aarDage do
 	
 	-- insert symbol
 	sym = display.newImage("images/test.png")
-	-- ?? sym = display.newImage(thord)
 	sym.x = nummer[i].x
 	sym.y = __H - 300
 	
